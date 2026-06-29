@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+<html lang="ko" ng-app="myApp" data-output="src/main/webapp/WEB-INF/views/main/ko/auctionList.jsp">
+  <head>
+    
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko" ng-app="myApp">
+<head>
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+<meta name="description" content="미술품 경매를 통해 많은 사람들과 일상 속 예술의 경험과 기쁨을 나누고자 합니다." />
+<meta name="keywords" content="미술품,경매,작품,미술,근현대,고미술,와인,보석,구매,판매,위탁,경매회사,갤러리,케이옥션,K옥션,seoulauction,auction" />
+<meta name="author" content="SeoulAuction" />
+<meta name="Copyright" content="SeoulAuction" />
+<meta name="Classification" content="회사소개, 미술품소개, 경매, 구매, 위탁" />
+
+<!-- 작품 정보가 있으면 동적으로 설정, 없으면 기본값 -->
+
+    
+    
+    
+        <!-- 기본 오픈그래프 -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="" />
+        <meta property="og:title" content="Seoul Auction" />
+      
+    
+
+    
+      
+      
+      
+        <meta property="og:description" content="대한민국 대표 미술품 경매 회사, 서울옥션">
+      
+    
+
+  
+    
+    
+      <meta property="og:image" content="/images/common/open_graph_image.png" />
+    
+  
+
+  <meta property="og:site_name" content="Seoulauction.com" />
+
+<meta property="al:web:url" content="https://www.seoulauction.com" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="msapplication-TileImage" content="/images/favic/ms-icon-144x144.png" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="application-name" content="SeoulAuction" />
+<!— Windows 8.1 + IE11 and above —>
+<meta name="msapplication-config" content="/webapp/browserconfig.xml" />
+<title>Seoul Auction</title>
+
+
+
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/common.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/lib/pretendard.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/lib/swiper.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/lib/angular/ngDialog.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/lib/angular/popup.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/common_popup.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/native.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/nav.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/lot.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/fullpage.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/my-page.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/live-auction.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/online-auction.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/upcoming-current-list.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/login.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/company-info.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/history.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/etc.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/chamber.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/lot-list.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/lot-view.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/pages/search.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/common.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/icons.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/popup.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/renewal/print.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/lib/sweetalert2.css" />
+
+
+
+
+
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/common_popup.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/lib/plugin/csslibrary.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/lib/plugin/csslibrary.min.css" />
+
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/pages_global.css" />
+<link rel="stylesheet" href="https://public.seoulauction.io/resources/static/style/src/20260624_103210/ps-status-badge.css" />
+
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favic/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/favic/apple-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favic/apple-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favic/apple-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favic/apple-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favic/apple-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/favic/apple-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favic/apple-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favic/apple-icon-152x152.png" />
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="/images/favic/apple-icon-180x180.png" />
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="/iamges/favic/apple-touch-icon.png" />
+<link rel="icon" type="image/svg+xml" href="/images/favic/favicon.svg" />
+<link rel="icon" type="image/png" href="https://www.seoulauction.com/images/favic/favicon.png" />
+<link rel="mask-icon" href="/images/favic/sa-full-icon.svg" />
+<link rel="manifest" href="/webapp/manifest.json" />
+<link rel="icon" type="image/png" href="/images/favic/android-icon-192x192.png" sizes="192x192" />
+
+
+
+<script src="https://public.seoulauction.io/resources/static/script/lib/angular.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/checklist-model.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/angular-sanitize.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/angular-animate.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/angular-bind-html-compile.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/src/20260624_103210/app.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/angular-paging.js"></script>
+
+
+<script src="https://public.seoulauction.io/resources/static/script/lib/jquery-3.6.0.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/axios-1.1.3.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/axios-pure.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/lodash.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/prefixfree.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/swiper.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/moment.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/moment-locale-ko.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/qs.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/moment-duration-format.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/ngDialog.min.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/src/20260624_103210/common.js?ver=1.0.0"></script>
+<script src="https://public.seoulauction.io/resources/static/script/src/20260624_103210/native.js?ver=1.0.0"></script>
+<script src="https://public.seoulauction.io/resources/static/script/src/20260624_103210/nav.js?ver=1.0.0"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/select2.min.js" defer></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/ace-counter.js" defer></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/sweetalert.min.js" defer></script>
+<script src="/script/lib/log.js" defer></script>
+
+
+
+    
+<script src="https://public.seoulauction.io/resources/static/script/src/20260624_103210/nav.js?ver=1.0.0"></script>
+
+<script src="https://public.seoulauction.io/resources/static/script/lib/jquerylibrary.js"></script>
+<script src="https://public.seoulauction.io/resources/static/script/lib/prefixfree.min.js"></script>
+
+    <script src="https://public.seoulauction.io/resources/static/script/src/20260624_103210/pages_common_ko.js"></script>
+
+
+<script>
+  app.value('locale', 'ko');
+  
+  sessionStorage.setItem("is_login", "true" );
+  
+  
+</script>
+</head>
+</html>
+
+    <script type="module" crossorigin src="https://public.seoulauction.io/resources/static/assets/20260624_103210/moment-CQ4Rq1DG.js"></script>
+    <script type="module" crossorigin src="https://public.seoulauction.io/resources/static/assets/20260624_103210/utils-DMb30fiR.js"></script>
+    <script type="module" crossorigin src="https://public.seoulauction.io/resources/static/assets/20260624_103210/Pagination-rQ6-GbgW.js"></script>
+    <script type="module" crossorigin src="https://public.seoulauction.io/resources/static/assets/20260624_103210/times-Dxb4vVV_.js"></script>
+    <script type="module" crossorigin src="https://public.seoulauction.io/resources/static/assets/20260624_103210/routes-auction-list-main-B5Rr_eLM.js"></script>
+    <link rel="stylesheet" crossorigin href="https://public.seoulauction.io/resources/static/assets/20260624_103210/utils-B4Wdmfip.css">
+    <link rel="stylesheet" crossorigin href="https://public.seoulauction.io/resources/static/assets/20260624_103210/main-BNh5U5Hb.css">
+  </head>
+  <body>
+    <div class="wrapper auction-list">
+      <div class="sub-wrap pageclass type-width_list">
+        
+
+
+
+
+
+
+
+<input type="hidden" id="cust_no" value="175154" />
+
+<header class="header main-header ">
+    <input type="hidden" id="mb_search_ko" value="" />
+    <div class="header_beltbox"> <!--class="on" block-->
+        <div class="swiper-container belt-swiper wrap_padding belttxtbox">
+            <div class="swiper-wrapper">
+            </div>
+            <span class="beltclose-btn closebtn btn-close-gray"></span>
+        </div>
+    </div>
+
+    <nav class="header_navbox" data-ng-controller="headCtl" data-ng-init="loadRecommandWord()">
+        <!-- pc -->
+        <section class="pc-nav">
+            <div class="wrap-top_area">
+                <div class="wrap-header_logo"><a href="/" onclick="sendLog('click', 'common-header-logo')"><img src="https://public.seoulauction.io/resources/assets/images/common/logo-sa-default.png" alt="seoulauction logo"></a></div>
+                <ul class="nav-utility">
+                    
+                    
+                    <li class="utility-login"><a onclick="logout('kimsg1995')">로그아웃</a></li>
+                    <li class="utility-tab utility-account"><a href="/mypage/liveBidReqList" onclick="sendLog('click', 'common-header-mypage')">마이페이지</a></li>
+                    
+                    <li>
+                        <button type="button" class="btn-toggle_search" ng-click="toggleSearchBox()"></button>
+                        <section class="search-bubble-box">
+                            <div class="wrap-search-inputs">
+                                <input onkeyup="searchFilter()" placeholder="작가명, 작품명으로 검색" type="text" class="topsearch-text" id="topsearchText" ng-keypress="$event.keyCode === 13 && goSearch('topsearchText', $event);" autocomplete="off" autofocus="autofocus">
+                                <button type="button" class="topsearch-btn" ng-click="goSearch('topsearchText', $event);"></button>
+                            </div>
+                            <div class="recent-search-pc"></div>
+                            <div class="recommend-search-part-pc"></div>
+                            <div class="wrap-add" id="ad-banner-ko-mo-nav-pc-2025">
+                                <a href="https://www.seoulauction.com/service/concierge?acec=00003F" onclick="sendLog('click', 'common-header-search-form-ad')">
+                                    <img src="https://public.seoulauction.io/resources/assets/images/main/ad_banner_ko_mo.jpg" alt="ad img" />
+                                </a>
+                            </div>
+                        </section>
+                    </li>
+                    <li class="nav-lang">
+                        <a class="nav-lang-ko" onclick="changeLang('/auction-list/results', '', 'en')">
+                            <img src="https://public.seoulauction.io/resources/assets/images/common/ico-lang_en.svg" alt="language img">
+                        </a>
+                        <a class="nav-lang-en" onclick="changeLang('/auction-list/results', '', 'ko')">
+                            <img src="https://public.seoulauction.io/resources/assets/images/common/ico-lang_ko.svg" alt="language img">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="wrap-nav_content">
+                <!-- 1depth -->
+                <div class="wrap-nav_1depth">
+                    <ul class="nav_1depth">
+                        <li>
+                            <a href="#" class="main-title">Auctions</a>
+                            <ul class="nav-2depth submenu-part01">
+                                <li id="menu_auction_pc"><a href="/auction-list/progress" onclick="sendLog('click', 'common-nav-auctions-progress')">진행 경매</a></li>
+                                <li id="menu_upcoming_pc"><a href="/auction-list/upcoming" onclick="sendLog('click', 'common-nav-auctions-upcoming')">예정 경매</a></li>
+                                <li><a href="/auction-list/results" onclick="sendLog('click', 'common-nav-auctions-result')">경매 결과</a></li>
+                                <li><a href="/auction/info " onclick="sendLog('click', 'common-nav-auctions-info')">경매 안내</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="main-title">Private Sales</a>
+                            <ul class="nav-2depth">
+                                <li id="menu_exhibit_pc"><a href="/privatesale/exhibit" onclick="sendLog('click', 'common-nav-ps-exhibit')">전시</a></li>
+                                <li id="menu_private_pc"><a href="/privatesale/psList" onclick="sendLog('click', 'common-nav-ps-private-sale')">프라이빗 세일</a></li>
+                                <li><a href="/privatesale/psGuide" onclick="sendLog('click', 'common-nav-ps-private-sale-guide')">프라이빗 세일 가이드</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="main-title">Sell</a>
+                            <ul class="nav-2depth submenu-part03">
+                                <li><a href="/sell/consignment" onclick="sendLog('click', 'common-nav-sell-info')">위탁 안내</a></li>
+                                <li><a href="/mypage/inquiryForm?cate1=sell" onclick="sendLog('click', 'common-nav-sell-apply')">위탁 신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="main-title">Services</a>
+                            <ul class="nav-2depth submenu-part04">
+                                <li id="menu_chamber_pc"><a href="/service/chamber">더 챔버</a></li>
+                                <li id="menu_academy_pc"><a href="/service/academy" onclick="sendLog('click', 'common-nav-services-academy')">아카데미</a></li>
+                                <li><a href="/service/loan" onclick="sendLog('click', 'common-nav-services-loan')">담보 대출</a></li>
+                                <li><a href="/service/storage" onclick="sendLog('click', 'common-nav-services-storage')">미술품 보관</a></li>
+                                <li><a href="/service/showroom" onclick="sendLog('click', 'common-nav-services-showroom')">장소 대관</a></li>
+                                <li><a href="/service/marketing" onclick="sendLog('click', 'common-nav-services-marketing')">기업 아트마케팅</a></li>
+                                <li><a href="/service/concierge" onclick="sendLog('click', 'common-nav-services-concierge')">명품 컨시어지</a></li>
+                                <li><a href="/service/artPrice" onclick="sendLog('click', 'common-nav-services-art-price')">미술품 시가감정 서비스</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 2depth -->
+                <div class="wrap-nav_2depth">
+                    <div class="nav_bg-blank"></div>
+                    <!-- 진행중 경매 -->
+                    <div class="Ingbanner-box">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- mobile -->
+        <section class="mo-nav">
+            <div class="mo-nav_top-area">
+                <div class="wrap-header_logo"><a href="/" onclick="sendLog('click', 'common-header-logo')"><img src="/images/common/logo-sa-no-est.svg" alt="seoulauction logo"></a></div>
+                <div>
+                    <button class="ico-m-top-search"></button>
+                    <button class="ico-m-gnbmenu"></button>
+                </div>
+            </div>
+            <!-- search -->
+            <section class="topsearch-box">
+                <form action="" class="scroll_none search-bg">
+                    <fieldset class="topsearch">
+                        <div class="mo-nav_topsearch-title">
+                            <h3>검색</h3>
+                            <span class="submenuBg-closeBtn top-search-closeBtn"></span>
+                        </div>
+
+                        <section class="search-bubble-box">
+                            <div class="wrap-search-inputs">
+                                <input onkeyup="searchFilter()" placeholder="작가명, 작품명으로 검색" type="text" class="topsearch-text" id="topsearchTextMo" ng-keypress="$event.keyCode === 13 && goSearch('topsearchTextMo', $event);" autocomplete="off" autofocus="autofocus">
+                                <button type="button" class="topsearch-btn" ng-click="goSearch('topsearchTextMo', $event);"></button>
+                            </div>
+                            <div class="recent-search-mo"></div>
+                            <div class="recommend-search-part-mo"></div>
+                            <div class="wrap-add" id="ad-banner-ko-mo-nav-mo-2025">
+                                <a href="https://www.seoulauction.com/service/concierge?acec=000049" onclick="sendLog('click', 'common-header-search-form-ad')">
+                                    <img src="https://public.seoulauction.io/resources/assets/images/main/ad_banner_ko_mo.jpg" alt="ad img" />
+                                </a>
+                            </div>
+                        </section>
+                    </fieldset>
+                </form>
+            </section>
+
+            <section class="gnb_submenuBg"></section>
+            <section class="mo-nav_list submenuBg">
+                <div class="wrap">
+                    <div class="mo-nav_list-top">
+                        <div class="mo-nav_list-top_left">
+                            <button class="ico-m-home"></button>
+
+                            <div class="nav-lang">
+                                <a class="nav-lang-ko" onclick="changeLang('/auction-list/results', '', 'en')"><img src="https://public.seoulauction.io/resources/assets/images/common/ico-lang_en.svg" alt="language img"></a>
+                                <a class="nav-lang-en" onclick="changeLang('/auction-list/results', '', 'ko')"><img src="https://public.seoulauction.io/resources/assets/images/common/ico-lang_ko.svg" alt="language img"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="submenuBg-closeBtn"></span>
+                        </div>
+                    </div>
+
+                    <div class="flex_wrap submenuBg-box">
+                        <ul class="subGnbmenu">
+                            <li class="subGnbmenu-tit">
+                                <span class="gnbmenu_arrow">
+                                    <span class="mo_1depth-title">Auctions</span>
+                                    <span class="arrow_icon"></span>
+                                </span>
+                                <ul class="submenu">
+                                    <li id="menu_auction_mo"><a href="/auction-list/progress" onclick="sendLog('click', 'common-nav-auctions-progress')">진행 경매</a></li>
+                                    <li id="menu_upcoming_mo"><a href="/auction-list/upcoming" onclick="sendLog('click', 'common-nav-auctions-upcoming')">예정 경매</a></li>
+                                    <li><a href="/auction-list/results" onclick="sendLog('click', 'common-nav-auctions-result')">경매 결과</a></li>
+                                    <li><a href="/auction/info " onclick="sendLog('click', 'common-nav-auctions-info')">경매 안내</a></li>
+                                </ul>
+                            </li>
+                            <li class="subGnbmenu-tit">
+                                <span class="gnbmenu_arrow">
+                                    <span class="mo_1depth-title">Private Sales</span>
+                                    <span class="arrow_icon"></span>
+                                </span>
+                                <ul class="submenu">
+                                    <li id="menu_exhibit_mo"><a href="/privatesale/exhibit" onclick="sendLog('click', 'common-nav-ps-exhibit')">전시</a></li>
+                                    <li id="menu_private_mo"><a href="/privatesale/psList" onclick="sendLog('click', 'common-nav-ps-private-sale')">프라이빗 세일</a></li>
+                                    <li><a href="/privatesale/psGuide" onclick="sendLog('click', 'common-nav-ps-private-sale-guide')">프라이빗 세일 가이드</a></li>
+                                </ul>
+                            </li>
+                            <li class="subGnbmenu-tit">
+                                <span class="gnbmenu_arrow">
+                                    <span class="mo_1depth-title">Sell</span>
+                                    <span class="arrow_icon"></span>
+                                </span>
+                                <ul class="submenu submenu-part03">
+                                    <li><a href="/sell/consignment" onclick="sendLog('click', 'common-nav-sell-info')">위탁 안내</a></li>
+                                    <li><a href="/mypage/inquiryForm?cate1=sell" onclick="sendLog('click', 'common-nav-sell-apply')">위탁 신청</a></li>
+                                </ul>
+                            </li>
+                            <li class="subGnbmenu-tit">
+                                <span class="gnbmenu_arrow">
+                                    <span class="mo_1depth-title">Services</span>
+                                    <span class="arrow_icon"></span>
+                                </span>
+                                <ul class="submenu submenu-part04">
+                                    <li id="menu_chamber_mo"><a href="/service/chamber" >더 챔버</a></li>
+                                    <li id="menu_academy_mo"><a href="/service/academy" onclick="sendLog('click', 'common-nav-services-academy')">아카데미</a></li>
+                                    <li><a href="/service/loan" onclick="sendLog('click', 'common-nav-services-loan')">담보 대출</a></li>
+                                    <li><a href="/service/storage" onclick="sendLog('click', 'common-nav-services-storage')">미술품 보관</a></li>
+                                    <li><a href="/service/showroom" onclick="sendLog('click', 'common-nav-services-showroom')">장소 대관</a></li>
+                                    <li><a href="/service/marketing" onclick="sendLog('click', 'common-nav-services-marketing')">기업 아트마케팅</a></li>
+                                    <li><a href="/service/concierge" onclick="sendLog('click', 'common-nav-services-concierge')">명품 컨시어지</a></li>
+                                    <li><a href="/service/artPrice" onclick="sendLog('click', 'common-nav-services-art-price')">미술품 시가감정 서비스</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <!-- 진행중경매 -->
+                        <h4 class="mo-nav-ing_title">진행중 경매</h4>
+                        <div id="ingbanner_box_mo"></div>
+                    </div>
+                    <ul class="mobile-utility m-ver">
+                        <li>
+                            
+                            
+                                <a href="/mypage/main" class="gnb_member" onclick="sendLog('click', 'common-header-mypage')">마이페이지</a>
+                            
+                        </li>
+                        <li>
+                            
+                                <a class="gnb_logout" onclick="logout('kimsg1995')">로그아웃</a>
+                            
+                            
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </nav>
+</header>
+<script>
+    app.requires.push.apply(app.requires, ["ngDialog", "checklist-model"]);
+    app.controller('headCtl', function($scope, consts, common, locale, $filter) {
+
+        /**
+         * Init - 추천 검색어, 최근 검색어 영역 로딩
+         * @param {Record<string, any>} data
+         */
+        $scope.loadRecommandWord = function() {
+            // 추천 검색어 클릭 핸들러를 window에 등록
+            window.handleRecommendKeywordClick = async function(keyword) {
+                // 검색 히스토리 API 호출
+                try {
+                    await axios.post('/api/auction/searchLog', {
+                        keyword: keyword,
+                        chk: 'all',
+                        mate_nm: null
+                    });
+                } catch (error) {
+                    console.error('검색 히스토리 저장 실패:', error);
+                }
+                
+                // 기존 로그 전송
+                sendLog('click', 'common-header-search-recommend', { searchContent: keyword });
+            };
+
+            axios.get('/api/auction/selectRecommandArtist').then(function(response) {
+                const success = response.data.success;
+                if (success) {
+                    if (response.data.data.length === 0) return;
+
+                    const data = response.data.data;
+                    sessionStorage.setItem('recommendWord', JSON.stringify(data));
+                    renderRecommendUI(data);
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+            renderRecentUI();
+        }
+
+        /**
+         * Render - 추천검색어
+         * @param {Record<string, any>} data
+         */
+        function renderRecommendUI(data) {
+            try {
+                const dataHtmlArray = data.map(item => {
+                    const artistNameKo = JSON.parse(item.artist_name).ko;
+                    return [
+                        `<span class="recommend-keyword">`,
+                        `<a href="/sale/search?searchContent=${artistNameKo}" onclick="handleRecommendKeywordClick('${artistNameKo}')" class="text-over" rel="nosublink">${artistNameKo}</a>`,
+                        `</span>`,
+                    ].join('');
+                });
+
+                const html = [
+                    `<span class="keyword-search-tit">추천 검색어</span>`,
+                    ...dataHtmlArray
+                ]
+
+                $('.recommend-search-part-pc').append(html.join('\n'));
+                $('.recommend-search-part-mo').append(html.join('\n'));
+            } catch(error) {
+                console.error(error);
+            }
+        }
+
+        /**
+         * 최근 검색어
+         * 검색결과 화면에서는 seoulauction-frontend 프로젝트에서 재렌더 진행
+         * src/routes/sale/components/SearchForm.tsx > reloadingKeywordHistory
+         */
+        function renderRecentUI() {
+            $(".recent-search-pc").empty();
+            $(".recent-search-mo").empty();
+
+            try {
+                let htmlArray = [];
+                let keywordsArray = JSON.parse(sessionStorage.getItem('keywordHistory') || '[]');
+
+                if (keywordsArray.length < 1) {
+                    htmlArray.push(`<span class="keyword-search-tit">최근 검색어</span>`);
+                    htmlArray.push(`<span class="recent-keyword recent-keyword-none">표시할 내용이 없습니다.</span>`);
+                } else {
+                    htmlArray.push(`<span class="keyword-search-tit">최근 검색어<span class="keyword-all-del">전체삭제</span></span>`);
+                    for (let i = 0; i < keywordsArray.length; i++) {
+                        if (i == 6) break;
+                        const itemHtml = [
+                            `<span class="recent-keyword text-over">`,
+                            `<a href="/sale/search?searchContent=${keywordsArray[i]}" onclick="sendLog('click', 'common-header-search-recent', { searchContent: '${keywordsArray[i]}' })" class="text-over">${keywordsArray[i]}</a>`,
+                            `<span class="keyword-del" searchContent="${keywordsArray[i]}"></span>`,
+                            `</span>`,
+                        ].join('');
+                        htmlArray.push(itemHtml);
+                    }
+                }
+
+                $(".recent-search-pc").append(htmlArray.join('\n'));
+                $(".recent-search-mo").append(htmlArray.join('\n'));
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        /**
+         * Event - 검색하기
+         */
+        $scope.goSearch = async function(elementId, $event) {
+            $event.preventDefault();
+            const sSearchContent = $("#" + elementId).val();
+
+            // 검색 히스토리 API 호출
+            try {
+                await axios.post('/api/auction/searchLog', {
+                    keyword: sSearchContent,
+                    chk: 'all',
+                    mate_nm: null
+                });
+            } catch (error) {
+                console.error('검색 히스토리 저장 실패:', error);
+            }
+
+            if (sSearchContent) {
+                sendLog('formSubmit', 'common-header-search-form', { searchContent: sSearchContent });
+                location.href = "/sale/search?searchContent=" + sSearchContent;
+            } else {
+                alert('검색어를 입력해주세요.');
+            }
+            return false;
+        }
+
+        /**
+         * Event - 검색박스 토글
+         */
+        $scope.toggleSearchBox =  function() {
+            $('.search-bubble-box').toggleClass('on');
+            if ($('.search-bubble-box').hasClass('on')) {
+                // PC Search Modal
+                $('.topsearch-text').focus();
+                $('.btn-toggle_search').addClass('on');
+            } else {
+                $('.btn-toggle_search').removeClass('on');
+            }
+        }
+    });
+
+    // 광고 배너 날짜 체크 (2025.12.31까지만 표시)
+    (function() {
+        var today = new Date();
+        var endDate = new Date('2025-12-31');
+        endDate.setHours(23, 59, 59, 999); // 하루 종료 시각까지 포함
+        
+        if (today > endDate) {
+            var adBanners = ['ad-banner-ko-mo-nav-pc-2025', 'ad-banner-ko-mo-nav-mo-2025'];
+            adBanners.forEach(function(id) {
+                var adBanner = document.getElementById(id);
+                if (adBanner) {
+                    adBanner.style.display = 'none';
+                }
+            });
+        }
+    })();
+</script>
+        <div id="container" ng-cloak oncontextmkou="return false" onselectstart="return false" ondragstart="return false">
+          <div id="contents" class="contents"></div>
+        </div>
+        
+
+<footer class="footer main-footer" data-ng-controller="handleFooter">
+  <section class="wrap-common_footer_top">
+    <div class="wrap-footer_content">
+      <div class="wrap-footer_top-left">
+        <ul class="footer-top-list">
+          <li><a href="/footer/companyIntro" onclick="sendLog('click', 'common-footer-company-info')">회사소개</a></li>
+          <li><a href="/footer/location" onclick="sendLog('click', 'common-footer-location')">위치안내</a></li>
+          <li><a href="/footer/media" onclick="sendLog('click', 'common-footer-press')">언론보도</a></li>
+          <li><a href="https://seoulauction.career.greetinghr.com/" target="_blank" rel="noreferrer" onclick="sendLog('click', 'common-footer-recruit')">채용</a></li>
+          <li><a href="/footer/notice" onclick="sendLog('click', 'common-footer-notice')">공지사항</a></li>
+          <li><a href="/footer/faq" onclick="sendLog('click', 'common-footer-faq')">FAQ</a></li>
+          <li><a href="/mypage/inquiryForm" class="bold" onclick="sendLog('click', 'common-footer-inquiry')">1:1문의</a></li>
+          <li><a href="/newsletter" onclick="sendLog('click', 'common-footer-newsletter')">뉴스레터</a></li>
+        </ul>
+        <div class="footer-business_info">
+          <p>
+            <span>(주)서울옥션</span>
+            <span>대표이사 : 이옥경</span>
+            <span>주소 : 서울특별시 종로구 평창31길 11 (평창동 465-10)</span>
+            <span>사업자등록번호 : 101-81-46818</span>
+            <span> 통신판매업신고 : 종로 제01-2173호 </span>
+            <span> 대표번호 : <a class="footer_tel" href="tel:02-395-0330" onclick="sendLog('click', 'common-footer-contact-infodesk-tel')">02-395-0330</a> </span>
+            <span>
+              <a
+                class="footer_tel leftmargin10"
+                href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1018146818"
+                target="_blank"
+                rel="noreferrer"
+                onclick="sendLog('click', 'common-footer-biz-compo-no')"
+              >사업자정보확인 &gt;</a>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="wrap-footer_top-right">
+        <p class="newsletter-info">뉴스레터를 구독하고 서울옥션의 아트 콘텐츠를 받아보세요.</p>
+        <div class="wrap-newletter_form">
+          <form action="" class="newsletter-formbox">
+            <fieldset class="newsletter-form">
+              <input id="newsEmail" type="email" placeholder="이메일" />
+              <input id="newsName" type="text" placeholder="이름" />
+            </fieldset>
+            <div class="newsletter_wrap-checkbox">
+              <fieldset class="newsletter-checkbox">
+                <input type="checkbox" id="subscript_check" value="subscript_check" name="subscript_check" />
+                <label for="subscript_check">
+                  <span id="news_sub_label" class="terms-checktxt"><span>개인정보 수집 및 이용</span>에 동의합니다 (필수)</span>
+                </label>
+              </fieldset>
+              <span class="wrap-info_btn" id="btn_info_arr_sub" onmouseover="arrDisplayFooter()">
+                <a class="wrap_news-subscribe subscriptBtn" href="">
+                  <span>구독하기</span>
+                  <svg width="18" viewBox="0 0 18 18" fill="none" height="18" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      style="transition: all 0.1s"
+                      d="M7 14.25L13 9L7 3.75"
+                      stroke="#111111"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path style="transition: all 0.1s" d="M13 9L4 9" stroke="#111111" stroke-linecap="round" />
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap-common_footer_btm">
+    <div class="wrap-footer_content">
+      <div class="wrap-footer_btm-left">
+        <ul class="footer-top-list wrap">
+          <li class="privacy"><a href="/footer/privacy" onclick="sendLog('click', 'common-footer-privacy')">개인정보처리방침</a></li>
+          <li><a href="/footer/terms" onclick="sendLog('click', 'common-footer-terms')">경매약관</a></li>
+          <li><a href="/footer/rules" onclick="sendLog('click', 'common-footer-rules')">내부관리규정</a></li>
+          <li><a href="/footer/ethicalMng" onclick="sendLog('click', 'common-footer-ethical-mng')">윤리경영</a></li>
+          <li><a href="/footer/creditInfoMng">신용정보활용체제</a></li>
+        </ul>
+        <div class="mo-footer_sa_info">
+          <div class="mo-footer_sa_info-title" ng-click="toggleSAInfo()">
+            <span>(주)서울옥션 사업자 정보</span>
+            <img class="icon_up" src="/images/common/ic_chevron_up.svg" alt="arr icon" />
+            <img class="icon_down" src="/images/common/ic_chevron_down.svg" alt="arr icon" />
+          </div>
+          <ul class="mo-footer_sa_info-content">
+            <li>(주)서울옥션 <span>사업자등록번호 : 101-81-46818</span>대표이사 : 이옥경</li>
+            <li>통신판매업신고 : 종로 제01-2173호</li>
+            <li>주소 : 서울특별시 종로구 평창31길 11 (평창동 465-10)</li>
+            <li>
+              대표번호 : 02-395-0330
+              <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=1018146818" target="_blank" onclick="sendLog('click', 'common-footer-biz-compo-no')">사업자정보 확인 &gt;</a>
+            </li>
+          </ul>
+        </div>
+        <p>
+          (주)서울옥션이 매도인인 경우를 제외하고, 사이트상의 모든 상품 및 거래에 대하여 (주)서울옥션은 통신판매중개자이며
+          통신판매의 당사자가 아닙니다. 따라서 (주)서울옥션은 상품·거래정보 및 거래에 대하여 책임을 지지 않습니다. 서울옥션
+          웹사이트의 콘텐츠(이미지/문자/영상/화면 등)에 대한 무단 복제, 배포, 전송, 게시, 크롤링/스크래핑 등 행위는 저작권법,
+          부정경쟁방지 및 영업비밀보호에 관한 법률 등 관련 법령에 의하여 금지됩니다.
+        </p>
+      </div>
+      <div class="wrap-footer_btm-right">
+        <ul class="footer_sns-list">
+          <li><a href="" onclick="openWebBrowserWithSendLog('https://www.youtube.com/user/SeoulAuction', 'click', 'common-footer-social-youtube');" class="sns-1"></a></li>
+          <li><a href="" onclick="openWebBrowserWithSendLog('https://www.instagram.com/seoulauction', 'click', 'common-footer-social-instagram');" class="sns-2"></a></li>
+          <li><a href="" onclick="openWebBrowserWithSendLog('https://www.facebook.com/seoulauction', 'click', 'common-footer-social-facebook');" class="sns-3"></a></li>
+          <li><a href="" onclick="openWebBrowserWithSendLog('https://blog.naver.com/PostList.nhn?blogId=s_auction', 'click', 'common-footer-social-naverblog');" class="sns-4"></a></li>
+          <li><a href="" onclick="openWebBrowserWithSendLog('https://pf.kakao.com/_yxiUyxl', 'click', 'common-footer-social-kakaochannel');" class="sns-5"></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</footer>
+
+
+
+
+
+
+
+<!-- 뉴스레터 팝업 -->
+<div class="blackBg newsletter-blackBg">
+	<div class="newsletter-termsbox">
+		<div class="newsletter-terms">
+			<div class="closebtn closebtn-b newsAgree-close"></div>
+			<span class="newsAgree-checktxt">개인정보 수집 및 이용 동의</span>
+
+			<p class="newsAgree-txt">
+				뉴스레터 발송을 위한 최소한의 개인정보를 수집하고 이용합니다. 수집된
+				정보는 발송 외 다른 목적으로 이용되지 않으며, 서비스가 종료되거나
+				구독을 해지할 경우 즉시 파기됩니다.
+			</p>
+		</div>
+		<div class="newsletter-comfirmbox">
+			<i class="newsAgree_icon">
+				<img src="https://public.seoulauction.io/resources/assets/images/common/ico-attention.svg" alt="느낌표 로고">
+			</i>
+			<p class="newsAgree-comfirm">
+				구독해주셔서 감사합니다.
+			</p>
+			<button type="submit" class="commonbtn btn-bg-b newsAgree-comfirmbtn">확인</button>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script> <script type="text/javascript"> if(!wcs_add) var wcs_add = {}; wcs_add["wa"] = "19656f7bcf4c5c"; wcs_do(); </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F337VLGGXB"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F337VLGGXB');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6005318-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-6005318-1');
+</script>
+
+<!-- AceCounter Mobile WebSite Gathering Script V.8.0.2019080601 -->
+<script language='javascript'>
+    var _AceGID=(function(){var Inf=['seoulauction.com','www.seoulauction.com,seoulauction.com','AX2A94053','AM','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;if(_CI.join('.').indexOf(Inf[3])<0){ _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
+    var _AceCounter=(function(){var G=_AceGID;var _sc=document.createElement('script');var _sm=document.getElementsByTagName('script')[0];if(G.o!=0){var _A=G.val[G.o-1];var _G=(_A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];var _U=(_A[5]).replace(/\,/g,'_');_sc.src='https:'+'//cr.acecounter.com/Mobile/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime());_sm.parentNode.insertBefore(_sc,_sm);return _sc.src;}})();
+</script>
+<!-- AceCounter Mobile Gathering Script End -->
+
+
+
+<!-- 비밀번호변경알림-비밀번호초기화 -->
+<div id="popup_pwsearch6-wrap" class="trp popupfixed-wrap login-popup">
+  <div class="popup-dim"></div>
+  <div class="popup-align mode-ms mode-mb_full">
+    <div class="popup-vertical">
+      <div class="popup-layer">
+        <div class="pop-panel">
+          <div class="pop-header no-title-with-contents">
+            <a class="btn_close icon-pop_close js-closepop" href="javascript:void(0);" title="닫기">X</a>
+            <div class="ico_box change_ico">
+              <img class="only_ib-pc" src="https://public.seoulauction.io/resources/assets/images/common/icon_password.svg" />
+              <img class="only_ib-mb" src="https://public.seoulauction.io/resources/assets/images/common/icon_password.svg" />
+            </div>
+            <div class="title-box_tac change_title">
+              <p class="">초기화 비밀번호 변경 안내</p>
+              <p class="title_sub">
+                관리자에 의해 비밀번호가 초기화 되었습니다.<br />
+                안전한 개인정보 보호를 위해<br class="only-mb" />
+                비밀번호를 변경해 주세요
+              </p>
+            </div>
+          </div>
+          <div class="pop-body">
+            <article class="button-area confirm_btn changenew_btn">
+              <div class="btn_set-float tac">
+                <a class="btn btn_gray_line" onClick="closeResetPassword()" href="javascript:void(0);" role="button"
+                  ><span>닫기</span></a
+                >
+                <a class="btn btn_point" onClick="closeResetPassword('Y')" href="javascript:void(0);" role="button"
+                  ><span>지금 변경하기</span></a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 비밀번호변경알림-비밀번호 변경 안내 -->
+<div id="popup_pwsearch5-wrap" class="trp popupfixed-wrap login-popup">
+  <div class="popup-dim"></div>
+  <div class="popup-align mode-ms mode-mb_full">
+    <div class="popup-vertical">
+      <div class="popup-layer">
+        <div class="pop-panel">
+          <div class="pop-header no-title-with-contents">
+            <a class="btn_close icon-pop_close js-closepop" onclick="sleepAlarmNow();" href="javascript:void(0);" title="닫기"
+              >X</a
+            >
+            <div class="ico_box change_ico">
+              <img class="only_ib-pc" src="https://public.seoulauction.io/resources/assets/images/common/icon_password.svg" />
+              <img class="only_ib-mb" src="https://public.seoulauction.io/resources/assets/images/common/icon_password.svg" />
+            </div>
+            <div class="title-box_tac change_title">
+              <p class="">비밀번호 변경 안내</p>
+              <p class="title_sub">
+                소중한 개인정보 보호를 위해<br />
+                비밀번호를 변경해 주세요!
+              </p>
+            </div>
+          </div>
+          <div class="pop-body">
+            <div class="info_box">
+              <ul class="tb1 mark_dot-list change_txt">
+                <li>타사이트와 동일한 로그인 정보를 사용하시는 회원님께서는 반드시 비밀번호를 변경해 주세요.</li>
+                <li>비밀번호는 영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합으로 8자~16자로 만들어 주세요.</li>
+                <li>주기적으로 비밀번호를 변경해 주세요.</li>
+              </ul>
+            </div>
+            <article class="confirm_btn change_btn">
+              <div class="btn_set-float tac">
+                <a class="btn btn_gray_line" onclick="reAlarm();" href="javascript:void(0);" role="button"
+                  ><span>30일 뒤 재알림</span></a
+                >
+                <a class="btn btn_point" onclick="sleepAlarmNow('Y');" href="javascript:void(0);" role="button"
+                  ><span>지금 변경하기</span></a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var resetPassword = '';
+  var modPassword = '';
+</script>
+<script src="https://public.seoulauction.io/resources/static/script/src/20260624_103210/layerPopup.js"></script>
+
+<script src="https://public.seoulauction.io/resources/static/script/src/20260624_103210/main/newsletter.js"></script>
+<script>
+  app.controller('handleFooter', function ($scope) {
+    let showFooterInfo = false;
+
+    $scope.toggleSAInfo = function () {
+      showFooterInfo = !showFooterInfo;
+      $('.mo-footer_sa_info-content').toggleClass('on');
+      if (showFooterInfo) {
+        $('.icon_up').css({ display: 'inline' });
+        $('.icon_down').css({ display: 'none' });
+      } else {
+        $('.icon_up').css({ display: 'none' });
+        $('.icon_down').css({ display: 'inline' });
+      }
+    };
+    $scope.isTablet = function () {
+      return window.screen.size < 1440 && window.screen.size >= 1024;
+    };
+  });
+
+  function arrDisplayFooter() {
+    $('#btn_info_arr_sub').mouseover(function () {
+      this.children[0].children[1].setAttribute('width', '28');
+      this.children[0].children[1].setAttribute('viewBox', '0 0 28 18');
+      this.children[0].children[1].children[0].setAttribute('d', 'M17.5 14.25L23.5 9L17.5 3.75');
+      this.children[0].children[1].children[1].setAttribute('d', 'M23 9L4.5 9');
+    });
+    $('#btn_info_arr_sub').mouseleave(function () {
+      this.children[0].children[1].setAttribute('width', '18');
+      this.children[0].children[1].setAttribute('viewBox', '0 0 18 18');
+      this.children[0].children[1].children[0].setAttribute('d', 'M7 14.25L13 9L7 3.75');
+      this.children[0].children[1].children[1].setAttribute('d', 'M13 9L4 9');
+    });
+  }
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
