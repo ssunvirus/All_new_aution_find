@@ -1,63 +1,68 @@
-import sys, re, requests
+import sys, json, requests
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-PUBLIC_URL = "https://public.seoulauction.io"
-VERSION    = "20260624_103210"
+BASE_URL = "https://www.seoulauction.com"
 
 session = requests.Session()
-session.headers['User-Agent'] = "Mozilla/5.0"
+session.headers.update({
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Content-Type": "application/json",
+    "Origin": BASE_URL,
+})
 
-# 상세 페이지에서 로드되는 src JS 파일 전부
-src_files = [
-    f"native.js",
-    f"nav.js",
-    f"layerPopup.js",
-    f"main/newsletter.js",
-    f"times-Dxb4vVV_.js",
-    f"Pagination-rQ6-GbgW.js",
-    f"utils-DMb30fiR.js",
+# 로그인
+session.get(f"{BASE_URL}/login")
+session.post(
+    f"{BASE_URL}/processLogin",
+    data={"loginId": "kimsg1995", "password": "rlatjsrbs95!"},
+    headers={"Content-Type": "application/x-www-form-urlencoded",
+             "Referer": f"{BASE_URL}/login"},
+    allow_redirects=True,
+)
+print("로그인 완료\n")
+
+# 알려진 데이터:
+# SALE_NO=1050 | main    → /api/auction/live/list/1050
+# SALE_NO=1051 | online
+# SALE_NO=1049 | online
+# SALE_NO=1045 | plan
+# SALE_NO=1047 | exhibit_sa
+
+test_cases = [
+    # (설명, URL)
+    ("1050 live (확인용)",    f"/api/auction/live/list/1050?device=pc"),
+    ("1050 live mo",          f"/api/auction/live/list/1050?device=mo"),
+    ("1051 online",           f"/api/auction/online/list/1051?device=pc"),
+    ("1051 online mo",        f"/api/auction/online/list/1051?device=mo"),
+    ("1049 online",           f"/api/auction/online/list/1049?device=pc"),
+    ("1051 results (GET)",    f"/api/auction/results/1051"),
+    ("1051 main",             f"/api/auction/main/list/1051?device=pc"),
+    ("1051 lot list v1",      f"/api/auction/lot/list/1051"),
+    ("1051 lot/1051",         f"/api/auction/lot/1051"),
+    ("1051 sale",             f"/api/auction/sale/list?sale_no=1051"),
 ]
 
-print("=== src JS 파일 전체 API 스캔 ===\n")
+print("=== API 패턴 테스트 ===\n")
+for desc, path in test_cases:
+    url = BASE_URL + path
+    r = session.get(url, timeout=8)
+    ct = r.headers.get("content-type", "")
 
-for fname in src_files:
-    if fname.startswith("times") or fname.startswith("Pagination") or fname.startswith("utils"):
-        url = f"{PUBLIC_URL}/resources/static/assets/{VERSION}/{fname}"
+    if r.status_code == 200 and "json" in ct:
+        try:
+            data = r.json()
+            if data.get("success"):
+                cnt = len(data.get("data", {}).get("list", data.get("data", [])))
+                print(f"[🎯 HIT!] {desc}")
+                print(f"         GET {path}")
+                print(f"         success=True, 항목={cnt}개")
+                print(f"         응답 샘플: {str(data)[:300]}")
+            else:
+                print(f"[200 no success] {desc} → {str(data)[:100]}")
+        except:
+            print(f"[200 no JSON] {desc}")
     else:
-        url = f"{PUBLIC_URL}/resources/static/script/src/{VERSION}/{fname}"
-
-    try:
-        r = session.get(url, timeout=8)
-        if r.status_code != 200:
-            print(f"[{r.status_code}] {fname}")
-            continue
-        text = r.text
-        api_hits = re.findall(r'/api/[A-Za-z0-9/_$\{\}\-\.]+', text)
-        axios_hits = list(re.finditer(r'axios[.\w]*\.(post|get)\s*\(', text))
-        if api_hits or axios_hits:
-            print(f"\n[{fname}] ({len(text):,}바이트)")
-            for h in sorted(set(api_hits)):
-                print(f"  API: {h}")
-            for m in axios_hits[:5]:
-                s = max(0, m.start()-20)
-                e = min(len(text), m.end()+150)
-                print(f"  axios: ...{text[s:e]}...")
-        else:
-            print(f"[없음] {fname}")
-    except Exception as ex:
-        print(f"[ERR] {fname}: {ex}")
-
-# 추가: result_detail.html 안의 인라인 스크립트 전체 출력
-print("\n\n=== result_detail.html 인라인 <script> 내용 ===")
-with open("result_detail.html", "r", encoding="utf-8") as f:
-    html = f.read()
-
-inline_scripts = re.findall(r'<script(?![^>]*src)[^>]*>(.*?)</script>', html, re.DOTALL)
-for i, sc in enumerate(inline_scripts):
-    sc = sc.strip()
-    if len(sc) > 50:
-        print(f"\n--- 인라인 스크립트 #{i+1} ({len(sc)}자) ---")
-        print(sc[:1500])
-
-print("\n완료.")
+        print(f"[{r.status_code}] {desc}")
