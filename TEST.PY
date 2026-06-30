@@ -103,31 +103,37 @@ def find_auction_by_date(target_date_input, session, target_year=None):
     
     # 1. 진행 중 경매 목록
     try:
-        r = session.get("https://www.seoulauction.com/api/auction/progress", timeout=5)
+        r = session.get("https://www.seoulauction.com/api/auction/progress", timeout=8)
         if r.status_code == 200:
             all_auctions.extend(r.json().get("data", []))
-    except Exception:
-        pass
+        else:
+            print(f"    -> ⚠️ 진행 중 API 응답 코드 오류: {r.status_code}")
+    except Exception as e:
+        print(f"    -> ⚠️ 진행 중 API 호출 에러: {e}")
 
     # 2. 예정된 경매 목록
     try:
-        r = session.get("https://www.seoulauction.com/api/auction/upcoming", timeout=5)
+        r = session.get("https://www.seoulauction.com/api/auction/upcoming", timeout=8)
         if r.status_code == 200:
             all_auctions.extend(r.json().get("data", []))
-    except Exception:
-        pass
+        else:
+            print(f"    -> ⚠️ 예정된 API 응답 코드 오류: {r.status_code}")
+    except Exception as e:
+        print(f"    -> ⚠️ 예정된 API 호출 에러: {e}")
 
     # 3. 완료된 경매 결과 목록 (최근 500개)
     try:
         r = session.post(
             "https://www.seoulauction.com/api/auction/results",
             json={"from": 0, "rows": 500, "sale_kind_cd": None, "find_word": None},
-            timeout=8
+            timeout=10
         )
         if r.status_code == 200:
             all_auctions.extend(r.json().get("data", {}).get("list", []))
-    except Exception:
-        pass
+        else:
+            print(f"    -> ⚠️ 경매결과 API 응답 코드 오류: {r.status_code}")
+    except Exception as e:
+        print(f"    -> ⚠️ 경매결과 API 호출 에러: {e}")
 
     # 중복 제거 (SALE_NO 기준)
     seen = set()
