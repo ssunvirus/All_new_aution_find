@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "서울옥션 경매결과 다운로더",
-  description: "경매 일자 또는 경매 번호만 입력하면 실시간으로 정리된 프리미엄 엑셀 파일(작품 이미지 포함)과 원본 사진을 다운로드합니다.",
+  title: "경매결과 다운로더",
+  description: "서울옥션 및 케이옥션의 경매 결과를 엑셀과 ZIP 파일로 다운로드합니다",
 };
 
 export default function RootLayout({
