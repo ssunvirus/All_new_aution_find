@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# 크롤러 생성 파일
+*.xlsx
+*.zip
+작품사진_*/
+
+# 분석용 스크래치 파일
+*.html
+result_detail.html
+results_page.html
+pages_common_ko.js
+routes_full.js
+
+# OS
+.DS_Store
+Thumbs.db

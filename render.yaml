@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: auction-downloader
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PYTHON_PATH
+        value: /venv/bin/python3

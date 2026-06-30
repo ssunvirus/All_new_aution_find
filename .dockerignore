@@ -1,0 +1,37 @@
+# Python 가상환경
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Node.js
+web/node_modules/
+web/.next/
+
+# 크롤러가 생성하는 임시 파일들
+*.xlsx
+*.zip
+작품사진_*/
+작품사진_케이옥션_*/
+
+# 스크래치/분석 파일 (배포 불필요)
+*.html
+*.ini
+*.js
+*.json
+!requirements.txt
+!web/package*.json
+!web/tsconfig.json
+!web/next.config.ts
+!web/eslint.config.mjs
+
+# Git
+.git/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 환경변수
+.env
+.env.*
